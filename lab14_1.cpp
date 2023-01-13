@@ -17,3 +17,30 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+void stat(const double G[],int N,double T[]){
+
+    for (int i = 0; i < N; i++) {
+        T[0] += G[i];
+    }
+    T[0] = T[0]/N;
+    double mean = T[0];
+    for (int j = 0; j < N; j++) {
+    T[1] += pow((G[j]-mean),2);
+    }
+    T[1] = sqrt(T[1]/(N));
+    for (int k = 0; k < N; k++) {
+        T[2] += log10 (G[k]);
+        }
+    T[2] = T[2]/N;
+    T[2] =pow(10,T[2]);
+    for (int m = 0; m < N; m++) {
+        T[3] += (1/G[m]);
+        }
+    T[3] = N/T[3];
+    T[4] = G[0];
+    T[5] = G[0];
+    for (int n = 0; n < N; n++) {
+        if(G[n]>T[4])T[4]=G[n];
+        if(G[n]<T[5])T[5]=G[n];
+        }
+}
